@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>UFC Fighters Explorer</title>
+  <meta charset="utf-8">
+  <meta name="description" content="UFC Fighters Explorer">
+  <meta name="author" content="October 2015">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>UFC Fighters Explorer</h1>
+    <h2>Developing Data Products - Coursera - October 2015</h2>
+    <p>October 2015<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Introduction</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>This application analyzes current and recently retired UFC fighters, and has for the objective to assess which one have been the 
+most successful. </p>
+
+<p>For those who are not familiar with it UFC stands for Ultimate Fighting Championship, which is the largest MMA promotion company in the world, featuring most of the top-ranked fighters in the sport. </p>
+
+<p>Likewise, MMA stands for mixed martial arts, and is a full-contact combat sport that allows the use of both striking and grappling techniques, both standing and on the ground, from a variety of other combat sports and martial arts.</p>
+
+<p>In order to run this analysis, I considered the following variables:</p>
+
+<ul>
+<li>Gender</li>
+<li>Country</li>
+<li>Career Win percentage</li>
+<li>Career Earnings</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Additional Information</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The UFC currently uses ten different weight classes, 2 for women and 8 for men
+Current champions of each weight class are indicated below:</p>
+
+<table><thead>
+<tr>
+<th>Weight Class Name</th>
+<th>Lower limit (Lb.)</th>
+<th>Upper limit (Lb.)</th>
+<th>Current Champion</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Strawweight</td>
+<td></td>
+<td>115</td>
+<td>Joanna Jedrzejczyk (W-POL)</td>
+</tr>
+<tr>
+<td>Flyweight</td>
+<td>115</td>
+<td>125</td>
+<td>Ronda Rousey (W-USA) / Demetrious Johnson (M-USA)</td>
+</tr>
+<tr>
+<td>Bantamweight</td>
+<td>125</td>
+<td>135</td>
+<td>T.J. Dillashaw (USA)</td>
+</tr>
+<tr>
+<td>Featherweight</td>
+<td>135</td>
+<td>145</td>
+<td>Jose Aldo (BRA)</td>
+</tr>
+<tr>
+<td>Lightweight</td>
+<td>145</td>
+<td>155</td>
+<td>Rafael dos Anjos (BRA)</td>
+</tr>
+<tr>
+<td>Welterweight</td>
+<td>155</td>
+<td>170</td>
+<td>Robbie Lawler (USA)</td>
+</tr>
+<tr>
+<td>Middleweight</td>
+<td>170</td>
+<td>185</td>
+<td>Chris Weidman (USA)</td>
+</tr>
+<tr>
+<td>Light Heavyweight</td>
+<td>185</td>
+<td>205</td>
+<td>Daniel Cormier (USA)</td>
+</tr>
+<tr>
+<td>Heavyweight</td>
+<td>205</td>
+<td>265</td>
+<td>Fabricio Werdum (BRA) (USA)</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Data Sources</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>This data his data has been extracted from <a href="https://en.wikipedia.org/wiki/List_of_current_UFC_fighters">Wikipedia</a>, hence the fighter list used in this analysis may not be the most up-to-date</p>
+
+<p>Likewise, UFC Fighters career earnings have been extracted from <a href="http://mma-manifesto.com/ufc-fighter-salary-database/salary-main/ufc-career-fighter-earnings.html">MMA Manifesto</a>, as of October 2015</p>
+
+<p>Prior to be loaded in R, this data has been compiled an aggregated in a .csv file, some light cleansing has been performed in order to facilitate the shiny app development</p>
+
+<p>Cleansing including removing special characters such as &#39;*&#39;, &#39;+&#39;, or accents in names, and breaking down each fighter&#39;s record to facilitate our analysis in R: from something like 20-5-1 to 20 Wins, 5 losses and 1 draw</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Data Summary</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>As mentioned, the data is made available in a comma-separated-value (.csv) file</p>
+
+<pre><code class="r">UFCDataAll &lt;- read.csv(&quot;UFC.csv&quot;)
+summary(UFCDataAll)
+</code></pre>
+
+<pre><code>##        ID           Gender           WeightClass     Country   
+##  Min.   :  1.0   Female: 56   Welterweight :102   USA    :236  
+##  1st Qu.:134.8   Male  :480   Lightweight  : 92   BRA    : 96  
+##  Median :268.5                Bantamweight : 86   Other  : 59  
+##  Mean   :268.5                Featherweight: 68   CAN    : 23  
+##  3rd Qu.:402.2                Middleweight : 54   GBR    : 22  
+##  Max.   :536.0                Flyweight    : 35   RUS    : 22  
+##                               (Other)      : 99   (Other): 78  
+
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>How to explore the data?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>In order to identify the most successful fighters, most common criteria include Career Earnings (in thousands of US$) and Career Win Percentage, but also of course, who is the current champion in each Weight Class</p>
+
+<p>This data set can be filter by Gender (first radio button), Country (second drop-down list), min./max. Career Win Percentage (first slider) or min. Career Earnings (second slider)</p>
+
+<p>Only countries with at least 5 active or retired fighters were kept in the list, the item &#39;Others&#39;, include fighters from all other countries. Fighters&#39; names and nicknames are available when hovering on the plot</p>
+
+<p>Enjoy!</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Introduction'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Additional Information'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Data Sources'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Data Summary'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='How to explore the data?'>
+         5
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
